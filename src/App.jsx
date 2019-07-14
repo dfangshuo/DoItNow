@@ -21,7 +21,8 @@ class App extends React.Component {
       items: [],
       nextItemId: 0,
       sessionIsRunning: false,
-      itemIdRunning: null
+      itemIdRunning: null,
+      areItemsMarkedAsCompleted: false
     };
   }
 
@@ -47,10 +48,37 @@ class App extends React.Component {
 
   increaseSessionsCompleted(itemId) {
     // TODO 5
+    let copy = [...this.state.items];
+    copy.forEach(item => {
+      if (item.id === itemId) {
+        item.sessionsCompleted += 1;
+      }
+    });
+    this.setState({
+      items: copy
+    });
   }
 
   toggleItemIsCompleted(itemId) {
     // TODO 6
+    let copy = [...this.state.items];
+    let areItemsMarkedAsCompleted = false;
+    copy.forEach(item => {
+      if (item.id === itemId) {
+        item.isCompleted = !item.isCompleted;
+      }
+    });
+
+    copy.forEach(item => {
+      if (item.isCompleted) {
+        areItemsMarkedAsCompleted = true;
+      }
+    });
+
+    this.setState({
+      items: copy,
+      areItemsMarkedAsCompleted: areItemsMarkedAsCompleted
+    });
   }
 
   startSession(id) {
@@ -73,13 +101,13 @@ class App extends React.Component {
         <div className="container">
           <header>
             <h1 className="heading">Today</h1>
-            <ClearButton onClick={this.clearCompletedItems} />
+            {areItemsMarkedAsCompleted && <ClearButton onClick={this.clearCompletedItems} />}
           </header>
           {/* TODO 4 */}
             {sessionIsRunning && <Timer
               key={itemIdRunning}
               mode="WORK"
-              onSessionComplete={() => { console.log("complete") }}
+              onSessionComplete={() => this.increaseSessionsCompleted(itemIdRunning)}
               autoPlays
             />}
             <div className="items-container">
@@ -91,7 +119,9 @@ class App extends React.Component {
                   // The map function creates a bunch of
                   // functions each with an id specific to each
                   // item
+                  isCompleted = {item.isCompleted}
                   startSession={() => this.startSession(item.id)}
+                  toggleIsCompleted={() => this.toggleItemIsCompleted(item.id)}
                 />
               )}
             </div>
