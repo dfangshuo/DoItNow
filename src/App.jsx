@@ -44,6 +44,9 @@ class App extends React.Component {
 
   clearCompletedItems() {
     // TODO 6
+    this.setState({
+      items: this.state.items.filter(item => item.isCompleted === false)
+    });
   }
 
   increaseSessionsCompleted(itemId) {
@@ -97,38 +100,40 @@ class App extends React.Component {
       areItemsMarkedAsCompleted,
     } = this.state;
     return (
+      // {this.state.items.length > 0 }
       <div className="flex-wrapper">
-        <div className="container">
-          <header>
-            <h1 className="heading">Today</h1>
-            {areItemsMarkedAsCompleted && <ClearButton onClick={this.clearCompletedItems} />}
-          </header>
-          {/* TODO 4 */}
-            {sessionIsRunning && <Timer
-              key={itemIdRunning}
-              mode="WORK"
-              onSessionComplete={() => this.increaseSessionsCompleted(itemIdRunning)}
-              autoPlays
-            />}
-            <div className="items-container">
-              {items.map(item =>
-                <TodoItem 
-                  key={item.id}
-                  description={item.description}
-                  sessionsCompleted={item.sessionsCompleted}
-                  // The map function creates a bunch of
-                  // functions each with an id specific to each
-                  // item
-                  isCompleted = {item.isCompleted}
-                  startSession={() => this.startSession(item.id)}
-                  toggleIsCompleted={() => this.toggleItemIsCompleted(item.id)}
-                />
-              )}
-            </div>
-        </div>
-        <footer>
-          <TodoInput addItem={this.addItem} />
-        </footer>
+        {this.state.items.length > 0 ? 
+          <div className="container">
+            <header>
+              <h1 className="heading">Today</h1>
+              {areItemsMarkedAsCompleted && <ClearButton onClick={this.clearCompletedItems} />}
+            </header>
+            {/* TODO 4 */}
+              {sessionIsRunning && <Timer
+                key={itemIdRunning}
+                mode="WORK"
+                onSessionComplete={() => this.increaseSessionsCompleted(itemIdRunning)}
+              />}
+              <div className="items-container">
+                {items.map(item =>
+                  <TodoItem 
+                    key={item.id}
+                    description={item.description}
+                    sessionsCompleted={item.sessionsCompleted}
+                    // The map function creates a bunch of
+                    // functions each with an id specific to each
+                    // item
+                    isCompleted = {item.isCompleted}
+                    startSession={() => this.startSession(item.id)}
+                    toggleIsCompleted={() => this.toggleItemIsCompleted(item.id)}
+                  />
+                )}
+              </div>
+          </div>
+          : <EmptyState />}
+          <footer>
+            <TodoInput addItem={this.addItem} />
+          </footer>
       </div>
     );
   }
