@@ -20,7 +20,7 @@ export default class TodoInput extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault();   // use it for any and all forms with custom submit behavior 
     const { addItem } = this.props;
     const { newTodoItemValue } = this.state;
 
@@ -34,7 +34,9 @@ export default class TodoInput extends React.Component {
     const { newTodoItemValue } = this.state;
     return (
       <div className="todo-input-container">
+        {/* Form groups buttons and inputs in */ }
         <form onSubmit={this.handleSubmit}>
+          {/* the onSubmit prop is called when users press the submit button (marked with submit type) */ }
           <input
             placeholder="Add Task..."
             value={newTodoItemValue}

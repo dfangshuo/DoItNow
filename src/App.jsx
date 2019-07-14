@@ -29,9 +29,15 @@ class App extends React.Component {
     const { nextItemId } = this.state;
     const newItem = {
       // TODO 2: initialize new item object
+      id: nextItemId, // a unique id identifying this item
+      description: description, // a brief description of the todo item
+      sessionsCompleted: 0, // how many times a pomodoro session has been completed
+      isCompleted: false, // whether the item has 
     };
     this.setState((prevState => ({
       // TODO 2: append new items to list and increase nextItemId by 1
+      nextItemId: prevState.nextItemId + 1,
+      items: prevState.items.concat(newItem)
     })));
   }
 
@@ -49,6 +55,10 @@ class App extends React.Component {
 
   startSession(id) {
     // TODO 4
+    this.setState({
+      sessionIsRunning: true,
+      itemIdRunning: id
+    });
   }
 
   render() {
@@ -66,13 +76,24 @@ class App extends React.Component {
             <ClearButton onClick={this.clearCompletedItems} />
           </header>
           {/* TODO 4 */}
-            {/* <Timer
+            {sessionIsRunning && <Timer
+              key={itemIdRunning}
               mode="WORK"
               onSessionComplete={() => { console.log("complete") }}
               autoPlays
-            /> */}
+            />}
             <div className="items-container">
-            {/* TODO 3:  display todo items */}
+              {items.map(item =>
+                <TodoItem 
+                  key={item.id}
+                  description={item.description}
+                  sessionsCompleted={item.sessionsCompleted}
+                  // The map function creates a bunch of
+                  // functions each with an id specific to each
+                  // item
+                  startSession={() => this.startSession(item.id)}
+                />
+              )}
             </div>
         </div>
         <footer>
