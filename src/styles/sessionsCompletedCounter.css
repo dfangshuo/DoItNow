@@ -3,10 +3,21 @@
   flex-direction:row;
 }
 
-.sessions-completed-line {
-  background: #D6D6D6;
+.sessions-line {
   width: 14px;
-  height: 3px;
+  height: 4.5px;
   border-radius: 1px;
   margin-left: 3px;
+}
+
+.completed {
+  background: #77BFA3;
+}
+
+.remaining {
+  background: #D6D6D6;
+}
+
+.exceeded {
+  background: #C96480;
 }

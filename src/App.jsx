@@ -32,6 +32,7 @@ class App extends React.Component {
       // TODO 2: initialize new item object
       id: nextItemId, // a unique id identifying this item
       description: description, // a brief description of the todo item
+      sessionsTargeted: 5,   // the number of pomodoro sessions targeted this item
       sessionsCompleted: 0, // how many times a pomodoro session has been completed
       isCompleted: false, // whether the item has 
     };
@@ -119,6 +120,7 @@ class App extends React.Component {
                   <TodoItem 
                     key={item.id}
                     description={item.description}
+                    sessionsTargeted={item.sessionsTargeted}
                     sessionsCompleted={item.sessionsCompleted}
                     // The map function creates a bunch of
                     // functions each with an id specific to each
