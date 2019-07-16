@@ -110,15 +110,19 @@ class App extends React.Component {
               {areItemsMarkedAsCompleted && <ClearButton onClick={this.clearCompletedItems} />}
             </header>
             {/* TODO 4 */}
-              {sessionIsRunning && <Timer
+              {/* {sessionIsRunning && <Timer
                 key={itemIdRunning}
                 mode="WORK"
                 onSessionComplete={() => this.increaseSessionsCompleted(itemIdRunning)}
-              />}
+              />} */}
               <div className="items-container">
                 {items.map(item =>
                   <TodoItem 
                     key={item.id}
+                    id={item.id}
+                    itemIdRunning={this.state.itemIdRunning}
+                    sessionIsRunning = {this.state.sessionIsRunning}
+                    increaseSessionsCompleted={this.increaseSessionsCompleted}
                     description={item.description}
                     sessionsTargeted={item.sessionsTargeted}
                     sessionsCompleted={item.sessionsCompleted}
