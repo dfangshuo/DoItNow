@@ -1,10 +1,20 @@
-.todo-item-container {
+.todo-item-outer-container {
   background-color: white;
   color: #3A3131;
+  display: block;
   padding: 1.5em 0.8em;
+  justify-content: space-between;
+  min-height: 27px;
+}
+
+.todo-item-inner-container {
+  background-color: white;
+  color: #3A3131;
   display:flex;
   justify-content: space-between;
   min-height: 27px;
+  transition: all 0.2s ease-out 0s;
+  margin-bottom: 1em;
 }
 
 .todo-item-container-left {
@@ -85,6 +95,10 @@
   outline: 0;
 }
 
-.todo-item-container:hover .todo-item-start-session-button {
+.todo-item-inner-container:hover .todo-item-start-session-button {
   display: block;
+}
+
+.break {
+  background-image: linear-gradient(-180deg, #5EEDAA 3%, #50c78f 100%);
 }

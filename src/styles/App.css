@@ -75,3 +75,9 @@ header {
   text-align: center;
   font-size: 1.2em;
 }
+
+.modal-container {
+  background-color: white;
+  color: #3A3131;
+  justify-content: space-between;
+}

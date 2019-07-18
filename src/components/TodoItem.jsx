@@ -17,9 +17,11 @@ function TodoItem({
   startSession,
   toggleIsCompleted,
 }) {
+  let mode = 'WORK';
+  const outerContainerClassName = `card todo-item-outer-container ${mode === 'WORK' ? null : 'break'}`;
   return (
-    <div>
-      <div className="card todo-item-container" >
+    <div className={outerContainerClassName} onClick={startSession} >
+      <div className="todo-item-inner-container">
         <div className="todo-item-container-left">
           <button onClick={toggleIsCompleted} type="button" className="todo-item-complete-button">
             { isCompleted
@@ -33,12 +35,18 @@ function TodoItem({
           </div>
         </div>
         <button type="button" onClick={startSession} className="todo-item-start-session-button"><Clock /></button>
-      </div>
-      {sessionIsRunning && itemIdRunning === id  && <Timer
-        key={itemIdRunning}
-        mode="WORK"
-        onSessionComplete={() => increaseSessionsCompleted(itemIdRunning)}
-      />}
+      </div> 
+      {
+        sessionIsRunning && 
+        itemIdRunning === id  && 
+        <div>
+          <Timer
+            key={itemIdRunning}
+            mode={mode}
+            onSessionComplete={() => increaseSessionsCompleted(itemIdRunning)}
+          />
+        </div>
+      }   
     </div>
   );
 }

@@ -96,7 +96,7 @@ class Timer extends React.Component {
   render() {
     const { mode, time, isPlaying } = this.state;
     const formattedTime = formatSecondsToMinutesAndSeconds(time);
-    const timerClassName = `card timer-container ${mode === 'WORK' ? 'timer-work' : 'timer-break'}`;
+    const timerClassName = `timer-container ${mode === 'WORK' ? 'timer-work' : 'timer-break'}`;
     return (
       <div className={timerClassName}>
         <div>

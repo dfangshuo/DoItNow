@@ -1,9 +1,9 @@
 import React from 'react';
-import Timer from './components/Timer';
 import TodoItem from './components/TodoItem';
 import TodoInput from './components/TodoInput';
 import ClearButton from './components/ClearButton';
 import EmptyState from './components/EmptyState';
+import ReactModal from 'react-modal';
 
 import './styles/App.css';
 
@@ -22,8 +22,20 @@ class App extends React.Component {
       nextItemId: 0,
       sessionIsRunning: false,
       itemIdRunning: null,
-      areItemsMarkedAsCompleted: false
+      areItemsMarkedAsCompleted: false,
+      showModal: false
     };
+
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
+  
+  handleCloseModal () {
+    this.setState({ showModal: false });
   }
 
   addItem(description) {
@@ -96,8 +108,6 @@ class App extends React.Component {
   render() {
     const {
       items,
-      sessionIsRunning,
-      itemIdRunning,
       areItemsMarkedAsCompleted,
     } = this.state;
     return (
@@ -139,6 +149,15 @@ class App extends React.Component {
           : <EmptyState />}
           <footer>
             <TodoInput addItem={this.addItem} />
+            <ReactModal 
+              isOpen={this.state.showModal}
+              contentLabel="Modal #1 Global Style Override Example"
+              onRequestClose={this.handleCloseModal}
+              // className="modal-container"
+            >
+              <p>Modal text!</p>
+              <button onClick={this.handleCloseModal}>Close Modal</button>
+            </ReactModal>
           </footer>
       </div>
     );
