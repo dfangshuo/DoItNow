@@ -5,6 +5,7 @@
   padding: 1.5em 0.8em;
   justify-content: space-between;
   min-height: 27px;
+  margin-bottom: 1em;
 }
 
 .todo-item-inner-container {
@@ -100,5 +101,10 @@
 }
 
 .break {
-  background-image: linear-gradient(-180deg, #5EEDAA 3%, #50c78f 100%);
+  background-color: #E8F5E9;
+  /* background-image: linear-gradient(-180deg, #5EEDAA 3%, #50c78f 100%); */
+}
+
+.in-progress {
+  background-color: #E3F2FD;
 }

@@ -10,6 +10,7 @@ const BREAK_TIME = 1;
 const MODES_TIMES = {
   WORK: WORK_TIME,
   BREAK: BREAK_TIME,
+  START: WORK_TIME
 };
 
 const TIME_STEP = 1000;
@@ -65,7 +66,7 @@ class Timer extends React.Component {
         if (time === 0) {
           this.stop();
 
-          if (mode === 'WORK') {
+          if (mode === 'WORK' || mode === 'START') {
             this.setTimer('BREAK', MODES_TIMES.BREAK);
           }
 
@@ -73,6 +74,8 @@ class Timer extends React.Component {
             this.completeSession();
             this.setTimer('WORK', MODES_TIMES.WORK);
           }
+
+          this.props.updateMode();
         }
       });
     }
@@ -96,7 +99,7 @@ class Timer extends React.Component {
   render() {
     const { mode, time, isPlaying } = this.state;
     const formattedTime = formatSecondsToMinutesAndSeconds(time);
-    const timerClassName = `timer-container ${mode === 'WORK' ? 'timer-work' : 'timer-break'}`;
+    const timerClassName = `timer-container ${mode === 'WORK' || mode === 'START' ? 'timer-work' : 'timer-break'}`;
     return (
       <div className={timerClassName}>
         <div>

@@ -7,12 +7,19 @@ import ReactModal from 'react-modal';
 
 import './styles/App.css';
 
+/**
+ * @edge 
+ * 
+ * if you start and pause your first session, your item is marked as not having started, you don't want that
+ * 
+ */
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.addItem = this.addItem.bind(this);
     this.clearCompletedItems = this.clearCompletedItems.bind(this);
-    this.startSession = this.startSession.bind(this);
+    // this.startSession = this.startSession.bind(this);
     this.increaseSessionsCompleted = this.increaseSessionsCompleted.bind(this);
     this.toggleItemIsCompleted = this.toggleItemIsCompleted.bind(this);
 
@@ -97,11 +104,26 @@ class App extends React.Component {
     });
   }
 
-  startSession(id) {
-    // TODO 4
-    this.setState({
-      sessionIsRunning: true,
-      itemIdRunning: id
+  // startSession(id) {
+  //   // TODO 4
+  //   this.setState({
+  //     sessionIsRunning: true,
+  //     itemIdRunning: id
+  //   });
+  // }
+
+  toggleSession(id) {
+    this.setState(prevState => {
+      if (prevState.itemIdRunning !== id) {
+        return {
+          sessionIsRunning: true,
+          itemIdRunning: id
+        };  
+      } else {
+          return {
+            sessionIsRunning: !prevState.sessionIsRunning
+          }; 
+      }
     });
   }
 
@@ -141,6 +163,7 @@ class App extends React.Component {
                     // item
                     isCompleted = {item.isCompleted}
                     startSession={() => this.startSession(item.id)}
+                    toggleSession={() => this.toggleSession(item.id)}
                     toggleIsCompleted={() => this.toggleItemIsCompleted(item.id)}
                   />
                 )}
