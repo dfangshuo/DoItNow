@@ -76,8 +76,43 @@ header {
   font-size: 1.2em;
 }
 
-.modal-container {
-  background-color: white;
-  color: #3A3131;
-  justify-content: space-between;
+.modal-outer-container {
+  background-color: #E1E8F6;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  height: 35%;
+  width: 55%;
+  margin: 10% auto;
+
+  
+/*   
+  border-color: white;
+  border-width: 4px;
+  border-color:  */
+}
+
+.modal-inner-container {
+  /* background-color: red; */
+  height: 90%;
+  width: 90%;
+  margin: 7% auto;
+  display:flex;
+  flex-direction: column;
+  /* display: flex;
+  /* flex-direction: column;
+  height: 40%;
+  width: 60%;  */
+  /* margin: auto; */
+  /*justify-content: space-between;
+  height: 40%;
+  
+  
+  border-color: white;
+  border-width: 4px;
+  border-color: */
+}
+
+.modal-heading {
+  color: #8A98AF;
 }

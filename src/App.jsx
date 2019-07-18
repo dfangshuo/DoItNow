@@ -6,12 +6,20 @@ import EmptyState from './components/EmptyState';
 import ReactModal from 'react-modal';
 
 import './styles/App.css';
+import AddPomoInput from './components/AddPomoInput';
+// ReactModal.defaultStyles.overlay.backgroundColor = '#2F2F2F';
 
 /**
  * @edge 
  * 
  * if you start and pause your first session, your item is marked as not having started, you don't want that
  * 
+ * SLATE
+ * TODO
+ * 
+ * 2. ability to change the title to whatever you want... 'what are we working on today'
+ * 3. send summary of session in an email to your desired email account
+ * 4. export functionality plus a close functionality (that also exports)
  */
 
 class App extends React.Component {
@@ -172,15 +180,27 @@ class App extends React.Component {
           : <EmptyState />}
           <footer>
             <TodoInput addItem={this.addItem} />
+            {/* <TodoInput addItem={this.handleOpenModal} /> */}
             <ReactModal 
               isOpen={this.state.showModal}
               contentLabel="Modal #1 Global Style Override Example"
               onRequestClose={this.handleCloseModal}
-              // className="modal-container"
+              className="modal-outer-container"
             >
-              <p>Modal text!</p>
-              <button onClick={this.handleCloseModal}>Close Modal</button>
+              <div className="modal-inner-container">
+                <h4 className="modal-heading">NUMBER OF POMODOROS</h4>
+                <AddPomoInput addItem={this.handleOpenModal} />
+                {/* <input
+                  placeholder="Add Task..."
+                  value={"5"}
+                  onChange={this.handleChange}
+                  className="todo-input"
+                /> */}
+                {/* <button onClick={this.addItem}>Close Modal</button> */}
+                <button onClick={this.handleCloseModal}>Close Modal</button>
+              </div>
             </ReactModal>
+            {window.onbeforeunload = s => this.state.items.length > 0 ? "" : null }
           </footer>
       </div>
     );

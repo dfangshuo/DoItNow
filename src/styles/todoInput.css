@@ -21,6 +21,13 @@
   color: #8A98AF;
 }
 
+.addPomo-input {
+  /* padding-left: 1em; */
+  background: white;
+  /* border-radius: 4px 0 0 4px; */
+  /* flex-grow: 1; */
+}
+
 .todo-input-button {
   background: #4A6ED2;
   color: white;
