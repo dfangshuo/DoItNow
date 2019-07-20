@@ -1,4 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# DoItNow
+
+https://doitnow.netlify.com/
+
+## Features
+
+### Pomodoro
+- DoItNow is based on the Pomodoro method, which breaks work sessions into chunks of Pomodoros (1 Pomodoro = 1x 25min work session + 1x 5min break)
+
+### Practice your time estimation skills
+- Create a todo-list item and set the number of Pomodoro sessions to finish it in
+- Time yourself for tasks and see how you perform relative to your plans
+
+This project is adapted from Lab 9 - Pomodoist (React Decal 2019).
 
 ## Available Scripts
 
