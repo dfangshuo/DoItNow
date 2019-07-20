@@ -9,7 +9,7 @@ Set goals, measure your progress: https://doitnow.netlify.com/
 ### Practice your time estimation skills
 - Create a todo list item and set the number of Pomodoro sessions to finish it in
 - Time yourself for tasks and see how you perform relative to your plans
-- Todo lists are not saved, force yourself to plan, prioritize, and put down items that you can finish in a session
+- Todo lists are not saved. Train yourself to plan, prioritize, and put down items that you can finish in a session
 
 This project is adapted from Lab 9 - Pomodoist (React Decal 2019).
 
