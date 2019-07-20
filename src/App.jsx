@@ -124,7 +124,7 @@ class App extends React.Component {
         item.isCompleted = !item.isCompleted;
       }
     });
-
+    
     copy.forEach(item => {
       if (item.isCompleted) {
         areItemsMarkedAsCompleted = true;
@@ -136,14 +136,6 @@ class App extends React.Component {
       areItemsMarkedAsCompleted: areItemsMarkedAsCompleted
     });
   }
-
-  // startSession(id) {
-  //   // TODO 4
-  //   this.setState({
-  //     sessionIsRunning: true,
-  //     itemIdRunning: id
-  //   });
-  // }
 
   toggleSession(id) {
     this.setState(prevState => {
@@ -180,12 +172,6 @@ class App extends React.Component {
               />
               {areItemsMarkedAsCompleted && <ClearButton onClick={this.clearCompletedItems} />}
             </header>
-            {/* TODO 4 */}
-              {/* {sessionIsRunning && <Timer
-                key={itemIdRunning}
-                mode="WORK"
-                onSessionComplete={() => this.increaseSessionsCompleted(itemIdRunning)}
-              />} */}
               {this.state.items.length > 0 ? 
               <div className="items-container">
                 {items.map(item =>
@@ -212,7 +198,6 @@ class App extends React.Component {
           </div>
           
           <footer>
-            {/* <TodoInput addItem={this.addItem} /> */}
             <TodoInput 
               addItem={this.addPressed} 
               ref={this.todoTextInput}

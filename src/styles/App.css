@@ -66,7 +66,6 @@ header {
 .empty-state-container {
   display: flex;
   flex-direction: column;
-  background-size: 20px 30px;
 }
 
 .empty-state-container > svg {
