@@ -100,9 +100,8 @@ class Timer extends React.Component {
   render() {
     const { mode, time, isPlaying } = this.state;
     const formattedTime = formatSecondsToMinutesAndSeconds(time);
-    const timerClassName = `timer-container ${mode === 'WORK' || mode === 'START' ? 'timer-work' : 'timer-break'}`;
     return (
-      <div className={timerClassName}>
+      <div className="timer-container">
         <div>
           <ResetButton onClick={this.reset} />
         </div>

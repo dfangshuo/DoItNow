@@ -89,7 +89,6 @@ header {
 }
 
 .modal-inner-container {
-  /* background-color: red; */
   height: 90%;
   width: 90%;
   margin: 7% auto;
@@ -99,4 +98,11 @@ header {
 
 .modal-heading {
   color: #8A98AF;
+}
+
+.acknowledgements {
+  color: #8A98AF;
+  font-size:11px;
+  margin-bottom: 0px;
+  text-align: center;
 }
