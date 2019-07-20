@@ -83,13 +83,9 @@ header {
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  height: 35%;
-  width: 35%;
+  height: 14em;
+  width: 33em;
   margin: 15% auto;
-/*   
-  border-color: white;
-  border-width: 4px;
-  border-color:  */
 }
 
 .modal-inner-container {
@@ -99,18 +95,6 @@ header {
   margin: 7% auto;
   display:flex;
   flex-direction: column;
-  /* display: flex;
-  /* flex-direction: column;
-  height: 40%;
-  width: 60%;  */
-  /* margin: auto; */
-  /*justify-content: space-between;
-  height: 40%;
-  
-  
-  border-color: white;
-  border-width: 4px;
-  border-color: */
 }
 
 .modal-heading {
