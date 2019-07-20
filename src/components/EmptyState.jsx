@@ -4,8 +4,8 @@ import { ReactComponent as EmptyStateIllustration } from '../icons/drawkit-natur
 function EmptyState() {
   return (
     <div className="empty-state-container">
+      <br />
       <EmptyStateIllustration />
-      <p className="empty-state-text">All done. Woohoo!</p>
     </div>
   );
 }

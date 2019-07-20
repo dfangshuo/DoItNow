@@ -143,10 +143,11 @@ class App extends React.Component {
     return (
       // {this.state.items.length > 0 }
       <div className="flex-wrapper">
-        {this.state.items.length > 0 ? 
+        {/* {this.state.items.length > 0 ?  */}
           <div className="container">
             <header>
-              <h1 className="heading">Today</h1>
+              {/* <h1 className="heading">Today</h1> */}
+              <input className="heading" placeholder="What we doing today?"/>
               {areItemsMarkedAsCompleted && <ClearButton onClick={this.clearCompletedItems} />}
             </header>
             {/* TODO 4 */}
@@ -155,6 +156,7 @@ class App extends React.Component {
                 mode="WORK"
                 onSessionComplete={() => this.increaseSessionsCompleted(itemIdRunning)}
               />} */}
+              {this.state.items.length > 0 ? 
               <div className="items-container">
                 {items.map(item =>
                   <TodoItem 
@@ -176,8 +178,9 @@ class App extends React.Component {
                   />
                 )}
               </div>
+              : <EmptyState />}
           </div>
-          : <EmptyState />}
+          
           <footer>
             <TodoInput addItem={this.addItem} />
             {/* <TodoInput addItem={this.handleOpenModal} /> */}
@@ -196,12 +199,12 @@ class App extends React.Component {
                   onChange={this.handleChange}
                   className="todo-input"
                 /> */}
-                {/* <button onClick={this.addItem}>Close Modal</button> */}
+                <button onClick={this.addItem}>Add Item</button>
                 <button onClick={this.handleCloseModal}>Close Modal</button>
               </div>
             </ReactModal>
-            {window.onbeforeunload = s => this.state.items.length > 0 ? "" : null }
           </footer>
+          {window.onbeforeunload = s => this.state.items.length > 0 ? "" : null }
       </div>
     );
   }
