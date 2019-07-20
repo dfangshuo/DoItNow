@@ -6,6 +6,7 @@ function EmptyState() {
     <div className="empty-state-container">
       <br />
       <EmptyStateIllustration />
+      <p className="acknowledgements"> Adapted from Pomodoist (React Decal 2019)</p>
     </div>
   );
 }

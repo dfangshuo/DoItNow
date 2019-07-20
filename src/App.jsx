@@ -197,7 +197,6 @@ class App extends React.Component {
               handleCloseModal={this.handleCloseModal}
               addItem={this.addItem}
             />
-            <p className="acknowledgements">adapted from Pomodoist [React Decal 2019]</p>
           </footer>
           {window.onbeforeunload = s => this.state.items.length > 0 ? "" : null }
       </div>
