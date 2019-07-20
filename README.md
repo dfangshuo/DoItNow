@@ -1,7 +1,5 @@
 # DoItNow
-https://doitnow.netlify.com/
-
-Set goals, measure your progress
+Set goals, measure your progress: https://doitnow.netlify.com/
 
 ## Features
 
