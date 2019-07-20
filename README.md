@@ -1,6 +1,7 @@
 # DoItNow
-
 https://doitnow.netlify.com/
+
+Set goals, measure your progress
 
 ## Features
 
@@ -8,8 +9,9 @@ https://doitnow.netlify.com/
 - DoItNow is based on the Pomodoro method, which breaks work sessions into chunks of Pomodoros (1 Pomodoro = 1x 25min work session + 1x 5min break)
 
 ### Practice your time estimation skills
-- Create a todo-list item and set the number of Pomodoro sessions to finish it in
+- Create a todo list item and set the number of Pomodoro sessions to finish it in
 - Time yourself for tasks and see how you perform relative to your plans
+- Todo lists are not saved, force yourself to plan, prioritize, and put down items that you can finish in a session
 
 This project is adapted from Lab 9 - Pomodoist (React Decal 2019).
 
