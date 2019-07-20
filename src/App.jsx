@@ -26,12 +26,13 @@ class App extends React.Component {
     super(props);
     this.addItem = this.addItem.bind(this);
     this.clearCompletedItems = this.clearCompletedItems.bind(this);
-    // this.startSession = this.startSession.bind(this);
     this.increaseSessionsCompleted = this.increaseSessionsCompleted.bind(this);
     this.toggleItemIsCompleted = this.toggleItemIsCompleted.bind(this);
+    this.addPressed = this.addPressed.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
 
     this.state = {
-      // TODO 1
       items: [],
       nextItemId: 0,
       sessionIsRunning: false,
@@ -41,9 +42,7 @@ class App extends React.Component {
       currDescription: '',
     };
 
-    this.addPressed = this.addPressed.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
+    // React Refs
     this.titleTextInput = React.createRef();
     this.todoTextInput = React.createRef(); 
   }
@@ -64,11 +63,6 @@ class App extends React.Component {
       this.todoTextInput.current.inputBox.current.focus();
     }
   }
-
-  // handleSubmit(numPomodoros) {
-  //   console.log("submitted");
-  //   this.addItem(numPomodoros);
-  // }
   
   handleCloseModal () {
     this.setState({ showModal: false });
@@ -91,14 +85,13 @@ class App extends React.Component {
       currDescription: '',
       showModal: false
     })));
-    // this.modalRef.current.modalInputRef.current.focus();
-    console.log(this.modalRef);
   }
 
   clearCompletedItems() {
     // TODO 6
     this.setState({
-      items: this.state.items.filter(item => item.isCompleted === false)
+      items: this.state.items.filter(item => item.isCompleted === false),
+      areItemsMarkedAsCompleted: false
     });
   }
 
@@ -158,12 +151,9 @@ class App extends React.Component {
       areItemsMarkedAsCompleted,
     } = this.state;
     return (
-      // {this.state.items.length > 0 }
       <div className="flex-wrapper">
-        {/* {this.state.items.length > 0 ?  */}
           <div className="container">
             <header>
-              {/* <h1 className="heading">Today</h1> */}
               <input 
                 className="heading" 
                 placeholder="What we doing today?"

@@ -4,8 +4,9 @@ import PausePlayButton from './PausePlayButton';
 import ResetButton from './ResetButton';
 import '../styles/timer.css';
 
-const WORK_TIME = 2;
-const BREAK_TIME = 1;
+const ONE_MIN = 60;
+const WORK_TIME = 25*ONE_MIN;
+const BREAK_TIME = 5*ONE_MIN;
 
 const MODES_TIMES = {
   WORK: WORK_TIME,

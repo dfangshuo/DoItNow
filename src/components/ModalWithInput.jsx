@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactModal from 'react-modal';
-import AddPomoInput from './AddPomoInput';
 import { ReactComponent as Plus } from '../icons/plus.svg';
 ReactModal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.51)';
 
