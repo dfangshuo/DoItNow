@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/static/media/play.2d876796.svg"
   },
   {
-    "revision": "75a399ef9179b53ac393",
-    "url": "/static/css/main.bc47cad6.chunk.css"
+    "revision": "418eed191192edc5fd59",
+    "url": "/static/css/main.64445095.chunk.css"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/static/media/clock.ea3f87d1.svg"
   },
   {
-    "revision": "75a399ef9179b53ac393",
-    "url": "/static/js/main.6fd7604a.chunk.js"
+    "revision": "418eed191192edc5fd59",
+    "url": "/static/js/main.dbafde6d.chunk.js"
   },
   {
     "revision": "4cf8e40940b590fb7ad5966caa7565d6",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/static/media/drawkit-nature-man-colour.e631e62e.svg"
   },
   {
-    "revision": "0308b2cc426f9323011f35ab0017cb6b",
+    "revision": "9b690a33650a34c199b4ae7cf56b264d",
     "url": "/index.html"
   }
 ];

@@ -156,7 +156,7 @@ class App extends React.Component {
             <header>
               <input 
                 className="heading" 
-                placeholder="What we doing today?"
+                placeholder="What are we doing today?"
                 ref={this.titleTextInput}
                 onKeyDown={this.onKeyDown}
               />
