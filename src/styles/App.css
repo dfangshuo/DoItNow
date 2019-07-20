@@ -66,6 +66,7 @@ header {
 .empty-state-container {
   display: flex;
   flex-direction: column;
+  background-size: 20px 30px;
 }
 
 .empty-state-container > svg {
@@ -79,15 +80,13 @@ header {
 }
 
 .modal-outer-container {
-  background-color: #E1E8F6;
+  background-color: white;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
   height: 35%;
-  width: 55%;
-  margin: 10% auto;
-
-  
+  width: 35%;
+  margin: 15% auto;
 /*   
   border-color: white;
   border-width: 4px;

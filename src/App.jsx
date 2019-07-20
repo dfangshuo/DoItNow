@@ -3,10 +3,9 @@ import TodoItem from './components/TodoItem';
 import TodoInput from './components/TodoInput';
 import ClearButton from './components/ClearButton';
 import EmptyState from './components/EmptyState';
-import ReactModal from 'react-modal';
+import ModalWithInput from './components/ModalWithInput';
 
 import './styles/App.css';
-import AddPomoInput from './components/AddPomoInput';
 // ReactModal.defaultStyles.overlay.backgroundColor = '#2F2F2F';
 
 /**
@@ -38,36 +37,62 @@ class App extends React.Component {
       sessionIsRunning: false,
       itemIdRunning: null,
       areItemsMarkedAsCompleted: false,
-      showModal: false
+      showModal: false,
+      currDescription: '',
     };
 
-    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.addPressed = this.addPressed.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.titleTextInput = React.createRef();
+    this.todoTextInput = React.createRef(); 
   }
 
-  handleOpenModal () {
-    this.setState({ showModal: true });
+  componentDidMount() {
+    this.todoTextInput.current.inputBox.current.focus();
   }
+
+  addPressed (description) {
+    this.setState({ 
+      showModal: true,
+      currDescription: description
+    });
+  }
+
+  onKeyDown(e) {
+    if (e.key === 'Enter') {
+      this.todoTextInput.current.inputBox.current.focus();
+    }
+  }
+
+  // handleSubmit(numPomodoros) {
+  //   console.log("submitted");
+  //   this.addItem(numPomodoros);
+  // }
   
   handleCloseModal () {
     this.setState({ showModal: false });
   }
 
-  addItem(description) {
+  addItem(numPomodoros) {
     const { nextItemId } = this.state;
     const newItem = {
       // TODO 2: initialize new item object
       id: nextItemId, // a unique id identifying this item
-      description: description, // a brief description of the todo item
-      sessionsTargeted: 5,   // the number of pomodoro sessions targeted this item
+      description: this.state.currDescription, // a brief description of the todo item
+      sessionsTargeted: numPomodoros,   // the number of pomodoro sessions targeted this item
       sessionsCompleted: 0, // how many times a pomodoro session has been completed
       isCompleted: false, // whether the item has 
     };
     this.setState((prevState => ({
       // TODO 2: append new items to list and increase nextItemId by 1
       nextItemId: prevState.nextItemId + 1,
-      items: prevState.items.concat(newItem)
+      items: prevState.items.concat(newItem),
+      currDescription: '',
+      showModal: false
     })));
+    // this.modalRef.current.modalInputRef.current.focus();
+    console.log(this.modalRef);
   }
 
   clearCompletedItems() {
@@ -147,7 +172,12 @@ class App extends React.Component {
           <div className="container">
             <header>
               {/* <h1 className="heading">Today</h1> */}
-              <input className="heading" placeholder="What we doing today?"/>
+              <input 
+                className="heading" 
+                placeholder="What we doing today?"
+                ref={this.titleTextInput}
+                onKeyDown={this.onKeyDown}
+              />
               {areItemsMarkedAsCompleted && <ClearButton onClick={this.clearCompletedItems} />}
             </header>
             {/* TODO 4 */}
@@ -182,27 +212,16 @@ class App extends React.Component {
           </div>
           
           <footer>
-            <TodoInput addItem={this.addItem} />
-            {/* <TodoInput addItem={this.handleOpenModal} /> */}
-            <ReactModal 
-              isOpen={this.state.showModal}
-              contentLabel="Modal #1 Global Style Override Example"
-              onRequestClose={this.handleCloseModal}
-              className="modal-outer-container"
-            >
-              <div className="modal-inner-container">
-                <h4 className="modal-heading">NUMBER OF POMODOROS</h4>
-                <AddPomoInput addItem={this.handleOpenModal} />
-                {/* <input
-                  placeholder="Add Task..."
-                  value={"5"}
-                  onChange={this.handleChange}
-                  className="todo-input"
-                /> */}
-                <button onClick={this.addItem}>Add Item</button>
-                <button onClick={this.handleCloseModal}>Close Modal</button>
-              </div>
-            </ReactModal>
+            {/* <TodoInput addItem={this.addItem} /> */}
+            <TodoInput 
+              addItem={this.addPressed} 
+              ref={this.todoTextInput}
+            />
+            <ModalWithInput
+              showModal={this.state.showModal}
+              handleCloseModal={this.handleCloseModal}
+              addItem={this.addItem}
+            />
           </footer>
           {window.onbeforeunload = s => this.state.items.length > 0 ? "" : null }
       </div>

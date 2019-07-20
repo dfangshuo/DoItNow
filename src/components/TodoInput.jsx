@@ -12,6 +12,7 @@ export default class TodoInput extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.inputBox = React.createRef();
   }
 
   handleChange(e) {
@@ -42,6 +43,7 @@ export default class TodoInput extends React.Component {
             value={newTodoItemValue}
             onChange={this.handleChange}
             className="todo-input"
+            ref={this.inputBox}
           />
           <button type="submit" className="todo-input-button">
             <Plus />
