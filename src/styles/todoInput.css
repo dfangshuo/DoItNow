@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.todo-input, .todo-input-button {
+.todo-input, .todo-input-button, .modal-input-button {
   box-sizing: border-box;
   padding-top: 0.7em;
   padding-bottom: 0.7em;
@@ -47,4 +47,21 @@
 .todo-input-button > svg {
   width: 1em;
   height: 1em;
+}
+
+.modal-input-button {
+  background: #4A6ED2;
+  padding: 0.6em 0.7em;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  /*
+  center children vertically and horizontally
+  https://stackoverflow.com/questions/25832340/css-flexbox-vertically-horizontally-center-image-without-explicitely-defining-pa
+  */
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+  /* minimum size */
+  flex-basis: 2.7em;
+  cursor: pointer;
 }

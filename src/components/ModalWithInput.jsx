@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactModal from 'react-modal';
-import { ReactComponent as Plus } from '../icons/plus.svg';
 ReactModal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.51)';
 
 export default class ModalWithInput extends React.Component {
@@ -8,7 +7,7 @@ export default class ModalWithInput extends React.Component {
         super(props);
 
         this.state = {
-            numPomodoros: 4
+            numPomodoros: 0
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -43,18 +42,18 @@ export default class ModalWithInput extends React.Component {
               className="modal-outer-container"
             >
               <div className="modal-inner-container">
-                <h4 className="modal-heading">SESSIONS TO COMPLETE IN</h4>
+                <h4 className="modal-heading">NUMBER OF POMODORO SESSIONS</h4>
                 <div className="todo-input-container">
                     <form onSubmit={this.handleSubmit}>
                         <input
-                            placeholder="4"
+                            placeholder="...you plan to complete this in"
                             onChange={this.handleChange}
                             className="todo-input"
                             autoFocus
                             type="number"
                         />
-                        <button type="submit" className="todo-input-button">
-                            <Plus />
+                        <button type="submit" className="modal-input-button">
+                            ADD
                         </button>
                     </form>      
                 </div>

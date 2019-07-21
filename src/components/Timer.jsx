@@ -44,15 +44,6 @@ class Timer extends React.Component {
     this.setTimer(mode, time);
   }
 
-  componentDidUpdate(prevState) {
-    if (prevState.time !== this.time) {
-      this.setState({
-        mode: this.props.mode,
-        time: this.props.demoMode ? DEMO_MODES_TIMES[this.props.mode] : MODES_TIMES[this.props.mode]
-      });
-    }
-  }
-
   componentWillUnmount() {
     this.stop();
   }

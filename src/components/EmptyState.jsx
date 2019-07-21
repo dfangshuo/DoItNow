@@ -6,7 +6,16 @@ function EmptyState() {
     <div className="empty-state-container">
       <br />
       <EmptyStateIllustration />
-      <p className="acknowledgements"> Adapted from Pomodoist (React Decal 2019)</p>
+      <div className="acknowledgements"> 
+        <p>
+          1. Add a task you want to complete, just like a regular to-do list
+          <br/>2. Select the # of Pomodoro sessions you plan to complete it in
+          <br/>3. Time and track how many sessions you actually take
+        </p>
+        <p>
+          Adapted from Pomodoist (React Decal 2019)
+        </p>
+      </div>
     </div>
   );
 }
