@@ -1,0 +1,16 @@
+.switch-container {
+    display: flex;
+    flex-direction: row;
+    color: #8A98AF;
+    font-weight: bolder;
+    font-size:15px;
+    margin-top: 0.5em;
+}
+
+.demo-button-on {
+    padding-left: 1em;
+    padding-top: 0.5em;
+    color: white;
+    font-size: 12px;
+    /* padding: 0em 0.1em; */
+}

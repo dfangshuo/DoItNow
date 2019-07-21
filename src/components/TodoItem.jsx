@@ -45,7 +45,10 @@ class TodoItem extends React.Component {
             </button>
             <div>
               <div className="todo-item-description">{ this.props.description }</div>
-              <SessionsCompletedCounter sessionsCompleted={this.props.sessionsCompleted} sessionsRemaining={this.props.sessionsTargeted-this.props.sessionsCompleted} />
+              <SessionsCompletedCounter 
+                sessionsCompleted={this.props.sessionsCompleted} 
+                sessionsRemaining={this.props.sessionsTargeted-this.props.sessionsCompleted} 
+              />
             </div>
           </div>
           {!this.props.isCompleted && <button type="button" onClick={this.props.toggleSession} className="todo-item-start-session-button"><Clock /></button>}
@@ -60,6 +63,7 @@ class TodoItem extends React.Component {
               mode={this.state.mode}
               onSessionComplete={() => this.props.increaseSessionsCompleted(this.props.itemIdRunning)}
               updateMode={this.updateMode}
+              demoMode={this.props.demoMode}
             />
           </div>
         }   

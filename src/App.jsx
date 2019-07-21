@@ -4,6 +4,7 @@ import TodoInput from './components/TodoInput';
 import ClearButton from './components/ClearButton';
 import EmptyState from './components/EmptyState';
 import ModalWithInput from './components/ModalWithInput';
+import DemoSwitch from './components/DemoSwitch';
 
 import './styles/App.css';
 // ReactModal.defaultStyles.overlay.backgroundColor = '#2F2F2F';
@@ -31,6 +32,7 @@ class App extends React.Component {
     this.addPressed = this.addPressed.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.toggleDemoMode = this.toggleDemoMode.bind(this);
 
     this.state = {
       items: [],
@@ -39,6 +41,7 @@ class App extends React.Component {
       itemIdRunning: null,
       areItemsMarkedAsCompleted: false,
       showModal: false,
+      demoMode: false,
       currDescription: '',
     };
 
@@ -145,6 +148,12 @@ class App extends React.Component {
     });
   }
 
+  toggleDemoMode() {
+    this.setState(prevState => {
+      return { demoMode: !prevState.demoMode }
+    })
+  }
+
   render() {
     const {
       items,
@@ -161,6 +170,10 @@ class App extends React.Component {
                 onKeyDown={this.onKeyDown}
               />
               {areItemsMarkedAsCompleted && <ClearButton onClick={this.clearCompletedItems} />}
+              <DemoSwitch 
+                demoMode={this.state.demoMode}
+                toggleDemoMode={this.toggleDemoMode}
+              />
             </header>
               {this.state.items.length > 0 ? 
               <div className="items-container">
@@ -181,6 +194,7 @@ class App extends React.Component {
                     startSession={() => this.startSession(item.id)}
                     toggleSession={() => this.toggleSession(item.id)}
                     toggleIsCompleted={() => this.toggleItemIsCompleted(item.id)}
+                    demoMode={this.state.demoMode}
                   />
                 )}
               </div>

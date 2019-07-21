@@ -14,6 +14,12 @@ const MODES_TIMES = {
   START: WORK_TIME
 };
 
+const DEMO_MODES_TIMES = {
+  WORK: 2,
+  BREAK: 1,
+  START: 2
+};
+
 const TIME_STEP = 1000;
 
 class Timer extends React.Component {
@@ -28,7 +34,7 @@ class Timer extends React.Component {
 
     this.state = {
       mode: props.mode,
-      time: MODES_TIMES[props.mode],
+      time: this.props.demoMode ? DEMO_MODES_TIMES[props.mode] : MODES_TIMES[props.mode],
       isPlaying: props.autoPlays,
     };
   }
@@ -36,6 +42,15 @@ class Timer extends React.Component {
   componentDidMount() {
     const { mode, time } = this.state;
     this.setTimer(mode, time);
+  }
+
+  componentDidUpdate(prevState) {
+    if (prevState.time !== this.time) {
+      this.setState({
+        mode: this.props.mode,
+        time: this.props.demoMode ? DEMO_MODES_TIMES[this.props.mode] : MODES_TIMES[this.props.mode]
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -98,7 +113,7 @@ class Timer extends React.Component {
 
 
   render() {
-    const { mode, time, isPlaying } = this.state;
+    const { time, isPlaying } = this.state;
     const formattedTime = formatSecondsToMinutesAndSeconds(time);
     return (
       <div className="timer-container">
